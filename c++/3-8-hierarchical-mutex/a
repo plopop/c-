@@ -1,0 +1,16 @@
+21waiting lock..waiting lock..
+
+try_lock(): hierarchy_value: 500, previous_hierarchy_value: 0, this_thread_hierarchy_value: 18446744073709551615
+update(): hierarchy_value: 500, previous_hierarchy_value: 0, this_thread_hierarchy_value: 18446744073709551615
+try_lock(): hierarchy_value: 500, previous_hierarchy_value: 0, this_thread_hierarchy_value: 500
+try_lock(): hierarchy_value: 1000, previous_hierarchy_value: 0, this_thread_hierarchy_value: 18446744073709551615
+update(): hierarchy_value: 1000, previous_hierarchy_value: 0, this_thread_hierarchy_value: 18446744073709551615
+try_lock(): hierarchy_value: 1000, previous_hierarchy_value: 0, this_thread_hierarchy_value: 1000
+1locked..
+unlock(): hierarchy_value: 1000, previous_hierarchy_value: 18446744073709551615, this_thread_hierarchy_value: 1000
+unlock(): hierarchy_value: 1000, previous_hierarchy_value: 0, this_thread_hierarchy_value: 18446744073709551615
+1unlocked
+2locked..
+unlock(): hierarchy_value: 500, previous_hierarchy_value: 18446744073709551615, this_thread_hierarchy_value: 500
+unlock(): hierarchy_value: 500, previous_hierarchy_value: 0, this_thread_hierarchy_value: 18446744073709551615
+2unlocked
