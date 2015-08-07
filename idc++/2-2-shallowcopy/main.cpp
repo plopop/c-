@@ -80,7 +80,6 @@ public:
 
 int main()
 {
-
     MyString s;
     s = MyString("hello");
     std::vector<MyString> vec;

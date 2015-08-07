@@ -93,19 +93,22 @@ public:
 
     void push(T new_value)
     {
+        std::cout << "waiting for pushing " << new_value << "...\n";
+
         std::lock_guard<std::mutex> lock(m);
         data.push (new_value);
 
 
-        //延时测试
-        std::cout << "waiting 2s for pushing " << new_value << "...";
-        m_time = 2;
-        struct timeval temp_timeout;
-        gettimeofday(&temp_timeout, 0); //获取当前时间
-        struct timespec timeout;
-        timeout.tv_sec = temp_timeout.tv_sec;
-        timeout.tv_nsec = (temp_timeout.tv_usec + m_time * 1000) * 1000;
-        pthread_cond_timedwait (&g_timer_cond, &g_timer_mutex, &timeout);
+
+        std::this_thread::sleep_for(std::chrono::seconds(2));   //延时测试
+
+//        m_time = 2;
+//        struct timeval temp_timeout;
+//        gettimeofday(&temp_timeout, 0); //获取当前时间
+//        struct timespec timeout;
+//        timeout.tv_sec = temp_timeout.tv_sec;
+//        timeout.tv_nsec = (temp_timeout.tv_usec + m_time * 1000) * 1000;
+//        pthread_cond_timedwait (&g_timer_cond, &g_timer_mutex, &timeout);
         std::cout  << new_value << "pushed\n";
     }
     std::shared_ptr<T> pop()
