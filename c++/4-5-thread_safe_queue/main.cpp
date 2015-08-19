@@ -81,9 +81,12 @@ private:
 //    std::default_random_engine generator(time(NULL));    //<random>
 //    std::uniform_int_distribution<int> dis(0, 100);  //<random>
 public:
+    static int q;
+
     data_chunk()
     {
-//        p = new A;
+        q++;
+
         a = new int[total];
 //        auto dice = std::bind(dis, generator);   //<functional>
 
@@ -97,9 +100,7 @@ public:
     {
         if (a)
             delete [] a;
-//        delete []b;
         std::cout << "\n~data_chunk()";
-//        delete []p;
     }
     data_chunk operator = (data_chunk) = delete;
     void printData()
@@ -138,7 +139,7 @@ void data_preparation_thread()
 
 void process(std::shared_ptr<data_chunk> data)
 {
-    data->printData();
+//    data->printData();
 }
 
 void data_processing_thread()
@@ -174,11 +175,11 @@ int main()
 //    std::cout << i << std::endl;
 //    }
 
-//    std::thread prepare_thread(data_preparation_thread);
-//    std::thread process_thread(data_processing_thread);
+    std::thread prepare_thread(data_preparation_thread);
+    std::thread process_thread(data_processing_thread);
 
-//    prepare_thread.join();
-//    process_thread.join();
+    prepare_thread.join();
+    process_thread.join();
 
 
     int *i = new int{11};
