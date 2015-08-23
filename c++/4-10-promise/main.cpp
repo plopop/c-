@@ -60,7 +60,6 @@ void process_connections(connection_set &connections)
                 data_packet data = connection->incoming();
                 auto p = connection->get_promise(data.id);
                 p.set_value(data.payload);
-
             }
         }
     }
